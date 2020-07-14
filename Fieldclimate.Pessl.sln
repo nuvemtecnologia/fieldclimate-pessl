@@ -1,0 +1,23 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{1A3A4DE9-CC76-40C0-8B8C-2315C93DCBBA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{1DEC390A-BA2A-4405-85FF-501231682CFD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fieldclimate.Pessl.Domain", "src\Fieldclimate.Pessl.Domain\Fieldclimate.Pessl.Domain.csproj", "{938F792C-E86E-42D9-8A9A-720858E82A85}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{938F792C-E86E-42D9-8A9A-720858E82A85} = {1A3A4DE9-CC76-40C0-8B8C-2315C93DCBBA}
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{938F792C-E86E-42D9-8A9A-720858E82A85}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{938F792C-E86E-42D9-8A9A-720858E82A85}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{938F792C-E86E-42D9-8A9A-720858E82A85}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{938F792C-E86E-42D9-8A9A-720858E82A85}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
