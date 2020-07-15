@@ -6,8 +6,8 @@ A .NETStandard client for the Pessl Instruments GmbH RESTful API.
   - [dashboard](https://ng.fieldclimate.com/)
 
 ## Usage
- - https://www.nuget.org/packages/XXXX-XXXX/
- - `dotnet add package XXXX-XXXX`
+ - hhttps://www.nuget.org/packages/FieldClimate.Pessl/
+ - `dotnet add package FieldClimate.Pessl`
 
 ### Configure dependency injection
 ```csharp
