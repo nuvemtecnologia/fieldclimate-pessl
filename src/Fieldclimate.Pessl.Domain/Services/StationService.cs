@@ -20,15 +20,15 @@ namespace Fieldclimate.Pessl.Domain.Services
             return GetAsync<IEnumerable<Station>>(requestUri);
         }
 
-        public Task<StationDetail> GetDetail(string stationId)
+        public Task<Station> Get(string stationId)
         {
             var requestUri = $"/station/{stationId}";
-            return GetAsync<StationDetail>(requestUri);
+            return GetAsync<Station>(requestUri);
         }
 
         public async Task<StationData> GetData(string stationId, DataGroup groupBy, DateTimeOffset? from, DateTimeOffset? to)
         {
-            var stationDetail = await GetDetail(stationId);
+            var stationDetail = await Get(stationId);
             var configTimezoneOffsetInMinute = stationDetail.config.timezone_offset;
             var timeSpan = new TimeSpan(0, configTimezoneOffsetInMinute, 0);
 

@@ -9,7 +9,7 @@ namespace Fieldclimate.Pessl.Domain.Services.Contratos
     public interface IStationService
     {
         Task<IEnumerable<Station>> GetAll();
-        Task<StationDetail> GetDetail(string stationId);
+        Task<Station> Get(string stationId);
         Task<StationData> GetData(string stationId, DataGroup groupBy, DateTimeOffset? from, DateTimeOffset? to);
         Task<StationData> GetLastData(string stationId, DataGroup groupBy);
         Task<IEnumerable<Sensor>> GetSensors(string stationId);
