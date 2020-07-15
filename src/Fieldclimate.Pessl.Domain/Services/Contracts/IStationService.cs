@@ -15,7 +15,7 @@ namespace FieldClimate.Pessl.Domain.Services.Contracts
         Task<IEnumerable<Sensor>> GetSensors(string stationId);
         Task<NodeRoot> GetNodes(string stationId);
         Task<dynamic> GetSerials(string stationId);
-        Task<dynamic> GetOtherStationsByProximity(string stationId, int distance, RadiusUnity radiusUnity);
+        Task<IEnumerable<StationProximity>> GetOtherStationsByProximity(string stationId, int distance, RadiusUnity radiusUnity);
         Task<IEnumerable<Event>> GetLastEvents(string stationId, int amount);
     }
 }

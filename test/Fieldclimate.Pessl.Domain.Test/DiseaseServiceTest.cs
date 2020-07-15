@@ -8,11 +8,6 @@ namespace Fieldclimate.Pessl.Domain.Test
 {
     public class DiseaseServiceTest : FieldClimatePesselTestBase
     {
-        public DiseaseServiceTest()
-        {
-            
-        }
-        
         [Theory]
         [InlineData(DataGroup.daily, 2, TimePeriod.days)]
         [InlineData(DataGroup.hourly, 2, TimePeriod.days)]
@@ -26,16 +21,19 @@ namespace Fieldclimate.Pessl.Domain.Test
         {
             using var scope = Provider.CreateScope();
             var diseaseService = scope.ServiceProvider.GetService<IDiseaseService>();
-            
+
             var diseases = new[]
             {
                 "SugarBeet/BeetCast",
                 "SugarBeet/Cercopri"
             };
 
-            var values = await diseaseService.GetLast(StationId, dataGroup, numberOfEvents, period, diseases);
+            foreach (var stationId in StationsId)
+            {
+                var values = await diseaseService.GetLast(stationId, dataGroup, numberOfEvents, period, diseases);
 
-            Assert.NotNull(values);
+                Assert.NotNull(values);
+            }
         }
     }
 }

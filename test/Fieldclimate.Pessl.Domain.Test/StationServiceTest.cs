@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Fieldclimate.Pessl.Domain.Enum;
 using Fieldclimate.Pessl.Domain.Model;
@@ -18,6 +19,9 @@ namespace Fieldclimate.Pessl.Domain.Test
             var stationService = scope.ServiceProvider.GetService<IStationService>();
 
             var values = await stationService.GetAll();
+
+            var allStations = values.Select(x => x.name.original);
+
             Assert.NotNull(values);
             Assert.NotEmpty(values);
         }
@@ -28,8 +32,11 @@ namespace Fieldclimate.Pessl.Domain.Test
             using var scope = Provider.CreateScope();
             var stationService = scope.ServiceProvider.GetService<IStationService>();
 
-            var values = await stationService.Get(StationId);
-            Assert.NotNull(values);
+            foreach (var stationId in StationsId)
+            {
+                var values = await stationService.Get(stationId);
+                Assert.NotNull(values);
+            }
         }
 
         [Theory]
@@ -45,8 +52,11 @@ namespace Fieldclimate.Pessl.Domain.Test
             using var scope = Provider.CreateScope();
             var stationService = scope.ServiceProvider.GetService<IStationService>();
 
-            var values = await stationService.GetData(StationId, dataGroup, from, to);
-            Assert.NotNull(values);
+            foreach (var stationId in StationsId)
+            {
+                var values = await stationService.GetData(stationId, dataGroup, from, to);
+                Assert.NotNull(values);
+            }
         }
 
         [Theory]
@@ -59,9 +69,12 @@ namespace Fieldclimate.Pessl.Domain.Test
             using var scope = Provider.CreateScope();
             var stationService = scope.ServiceProvider.GetService<IStationService>();
 
-            var values = await stationService.GetLastData(StationId, dataGroup);
+            foreach (var stationId in StationsId)
+            {
+                var values = await stationService.GetLastData(stationId, dataGroup);
 
-            Assert.NotNull(values);
+                Assert.NotNull(values);
+            }
         }
 
         [Fact]
@@ -70,10 +83,13 @@ namespace Fieldclimate.Pessl.Domain.Test
             using var scope = Provider.CreateScope();
             var stationService = scope.ServiceProvider.GetService<IStationService>();
 
-            var values = await stationService.GetSensors(StationId);
+            foreach (var stationId in StationsId)
+            {
+                var values = await stationService.GetSensors(stationId);
 
-            Assert.NotNull(values);
-            Assert.NotEmpty(values);
+                Assert.NotNull(values);
+                Assert.NotEmpty(values);
+            }
         }
 
         [Fact]
@@ -82,9 +98,11 @@ namespace Fieldclimate.Pessl.Domain.Test
             using var scope = Provider.CreateScope();
             var stationService = scope.ServiceProvider.GetService<IStationService>();
 
-            var values = await stationService.GetNodes(StationId);
-
-            Assert.NotNull(values);
+            foreach (var stationId in StationsId)
+            {
+                var values = await stationService.GetNodes(stationId);
+                Assert.NotNull(values);
+            }
         }
 
         [Fact]
@@ -93,9 +111,12 @@ namespace Fieldclimate.Pessl.Domain.Test
             using var scope = Provider.CreateScope();
             var stationService = scope.ServiceProvider.GetService<IStationService>();
 
-            var values = await stationService.GetSerials(StationId);
+            foreach (var stationId in StationsId)
+            {
+                var values = await stationService.GetSerials(stationId);
 
-            Assert.NotNull(values);
+                Assert.NotNull(values);
+            }
         }
 
         [Theory]
@@ -106,9 +127,12 @@ namespace Fieldclimate.Pessl.Domain.Test
             using var scope = Provider.CreateScope();
             var stationService = scope.ServiceProvider.GetService<IStationService>();
 
-            var values = await stationService.GetOtherStationsByProximity(StationId, distance, radiusUnity);
-            
-            Assert.NotNull(values);
+            foreach (var stationId in StationsId)
+            {
+                var values = await stationService.GetOtherStationsByProximity(stationId, distance, radiusUnity);
+
+                Assert.NotNull(values);
+            }
         }
 
         [Theory]
@@ -119,9 +143,12 @@ namespace Fieldclimate.Pessl.Domain.Test
             using var scope = Provider.CreateScope();
             var stationService = scope.ServiceProvider.GetService<IStationService>();
 
-            var values = await stationService.GetLastEvents(StationId, amount);
-            Assert.NotNull(values);
-            Assert.NotEmpty(values);
+            foreach (var stationId in StationsId)
+            {
+                var values = await stationService.GetLastEvents(stationId, amount);
+                Assert.NotNull(values);
+                Assert.NotEmpty(values);
+            }
         }
     }
 }

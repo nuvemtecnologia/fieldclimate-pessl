@@ -22,8 +22,11 @@ namespace Fieldclimate.Pessl.Domain.Test
             using var scope = Provider.CreateScope();
             var forecastService = scope.ServiceProvider.GetService<IForecastService>();
 
-            var values = await forecastService.Get(StationId, dataGroup, nextDays);
-            Assert.NotNull(values);
+            foreach (var stationId in StationsId)
+            {
+                var values = await forecastService.Get(stationId, dataGroup, nextDays);
+                Assert.NotNull(values);
+            }
         }
     }
 }

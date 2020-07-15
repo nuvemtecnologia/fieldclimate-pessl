@@ -1,8 +1,10 @@
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using Fieldclimate.Pessl.Domain.Factories;
 using Fieldclimate.Pessl.Domain.Model;
 using FieldClimate.Pessl.Domain.Services.Contracts;
+using Newtonsoft.Json.Linq;
 
 namespace Fieldclimate.Pessl.Domain.Services
 {
@@ -30,16 +32,68 @@ namespace Fieldclimate.Pessl.Domain.Services
             return GetAsync<dynamic>(requestUri);
         }
 
-        public Task<dynamic> GetGroupSensors()
+        public async Task<IEnumerable<GroupSensor>> GetGroupSensors()
         {
             const string requestUri = "/system/group/sensors";
-            return GetAsync<dynamic>(requestUri);
+            var values = await GetAsync<dynamic>(requestUri);
+
+            var result = new List<GroupSensor>();
+
+            if (!(values is JObject jObject)) return result;
+
+            foreach (var (key, value) in jObject)
+            {
+                var sensor = new GroupSensor()
+                {
+                    Group = value.Value<string>("group"),
+                    Name = value.Value<string>("name"),
+                    Sensors = GetSensorItens(value)
+                };
+
+                result.Add(sensor);
+            }
+
+            return result;
         }
 
-        public Task<dynamic> GetTypes()
+        private IEnumerable<GroupSensorItem> GetSensorItens(JToken value)
+        {
+            var result = new List<GroupSensorItem>();
+            var sensors = value?.Value<JObject>("sensors");
+
+            if (sensors == null) return result;
+            
+
+            foreach (var (key1, value1) in sensors)
+            {
+                var sensorItem = value1.ToObject<GroupSensorItem>();
+                sensorItem.Id = key1;
+
+                result.Add(sensorItem);
+            }
+
+            return result;
+        }
+
+        public async Task<IEnumerable<SystemType>> GetTypes()
         {
             const string requestUri = "/system/types";
-            return GetAsync<dynamic>(requestUri);
+            var values = await GetAsync<dynamic>(requestUri);
+
+            var result = new List<SystemType>();
+
+            if (!(values is JObject jObject)) return result;
+
+            foreach (var (key, value) in jObject)
+            {
+                result.Add(new SystemType()
+                {
+                    Key = key,
+                    Value = value.ToString()
+                });
+            }
+
+            return result;
         }
 
         public Task<IEnumerable<Country>> GetCountries()

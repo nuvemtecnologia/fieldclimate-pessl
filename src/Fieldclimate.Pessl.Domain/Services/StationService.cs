@@ -5,6 +5,7 @@ using Fieldclimate.Pessl.Domain.Enum;
 using Fieldclimate.Pessl.Domain.Factories;
 using Fieldclimate.Pessl.Domain.Model;
 using FieldClimate.Pessl.Domain.Services.Contracts;
+using Newtonsoft.Json.Linq;
 
 namespace Fieldclimate.Pessl.Domain.Services
 {
@@ -68,11 +69,28 @@ namespace Fieldclimate.Pessl.Domain.Services
             return GetAsync<dynamic>(requestUri);
         }
 
-        public Task<dynamic> GetOtherStationsByProximity(string stationId, int distance, RadiusUnity radiusUnity)
+        public async Task<IEnumerable<StationProximity>> GetOtherStationsByProximity(string stationId, int distance, RadiusUnity radiusUnity)
         {
             var radius = $"{distance}{radiusUnity.GetDescription()}";
             var requestUri = $"/station/{stationId}/proximity/{radius}";
-            return GetAsync<dynamic>(requestUri);
+
+            var values = await GetAsync<dynamic>(requestUri);
+
+            var result = new List<StationProximity>();
+
+            if (!(values is JObject jObject)) return result;
+            
+            foreach (var (key, value) in jObject)
+            {
+                result.Add(
+                    new StationProximity()
+                    {
+                        StationId = key,
+                        Coordinate = value.ToObject<Coordinate>()
+                    });
+            }
+            
+            return result;
         }
 
         public Task<IEnumerable<Event>> GetLastEvents(string stationId, int amount)

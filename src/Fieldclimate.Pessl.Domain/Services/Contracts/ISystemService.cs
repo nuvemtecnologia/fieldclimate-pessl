@@ -9,8 +9,8 @@ namespace FieldClimate.Pessl.Domain.Services.Contracts
         Task<bool> GetStatus();
         Task<dynamic> GetSensors();
         Task<dynamic> GetGroups();
-        Task<dynamic> GetGroupSensors();
-        Task<dynamic> GetTypes();
+        Task<IEnumerable<GroupSensor>> GetGroupSensors();
+        Task<IEnumerable<SystemType>> GetTypes();
         Task<IEnumerable<Country>> GetCountries();
         Task<IEnumerable<SystemDisease>> GetDiseases();
     }
