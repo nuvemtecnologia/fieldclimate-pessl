@@ -4,6 +4,7 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using Fieldclimate.Pessl.Domain.ExtensionsMethods;
 using Fieldclimate.Pessl.Domain.Factories;
+using Newtonsoft.Json;
 
 namespace Fieldclimate.Pessl.Domain.Services
 {
@@ -26,7 +27,7 @@ namespace Fieldclimate.Pessl.Domain.Services
 
         protected async Task<TReturn> PostAsync<TReturn>(string requestUri, object body)
         {
-            var jsonContent = JsonSerializer.Serialize(body);
+            var jsonContent = JsonConvert.SerializeObject(body);
             var contentString = new StringContent(jsonContent, Encoding.UTF8, "application/json");
 
             var client = _pesslHttpClientFactory.Create();

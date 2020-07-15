@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Fieldclimate.Pessl.Domain.Enum;
 using Fieldclimate.Pessl.Domain.Factories;
@@ -12,14 +13,14 @@ namespace Fieldclimate.Pessl.Domain.Services
         {
         }
 
-        public Task<dynamic> GetLastChart(string stationId, ChartType chartType, DataGroup dataGroup, string time)
+        public async Task<dynamic> GetLastChart(string stationId, ChartType chartType, DataGroup dataGroup, string time)
         {
             var requestUri = $"chart/{chartType.GetDescription()}/{stationId}/{dataGroup.GetDescription()}/last/{time}";
 
-            return GetAsync<dynamic>(requestUri);
+            return await GetAsync<dynamic>(requestUri);
         }
 
-        public Task<dynamic> GetForecastImageChart(string stationId, ForecastOptionImage optionData)
+        public Task<IEnumerable<string>> GetForecastImageChart(string stationId, ForecastOptionImage optionData)
         {
             var requestUri = $"chart/image/{stationId}";
 
@@ -28,7 +29,7 @@ namespace Fieldclimate.Pessl.Domain.Services
                 name = optionData.GetDescription()
             };
 
-            return PostAsync<dynamic>(requestUri, body);
+            return PostAsync<IEnumerable<string>>(requestUri, body);
         }
     }
 }

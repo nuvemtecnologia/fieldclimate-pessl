@@ -37,9 +37,23 @@ public class PesslChartController : ControllerBase
 ```
 
 # Run test
+- it is necessary to create the following environment variables
+
+
 ```sh
+#zshrc
 echo "export PESSL_BASE_ADDRESS=https://api.fieldclimate.com" >> ~/.zshrc && \
 echo "export PESSL_PUBLIC_KEY=<YOUR_PESSL_PUBLIC_KEY>" >> ~/.zshrc && \
 echo "export PESSL_PRIVATE_KEY=<PESSL_PRIVATE_KEY>" >> ~/.zshrc && \
 source ~/.zshrc
 ```
+
+```sh
+#bashrc
+echo "export PESSL_BASE_ADDRESS=https://api.fieldclimate.com" >> ~/.bashrc&& \
+echo "export PESSL_PUBLIC_KEY=<YOUR_PESSL_PUBLIC_KEY>" >> ~/.bashrc && \
+echo "export PESSL_PRIVATE_KEY=<PESSL_PRIVATE_KEY>" >> ~/.bashrc && \
+source ~/.bashrc
+```
+
+`dotnet test`
