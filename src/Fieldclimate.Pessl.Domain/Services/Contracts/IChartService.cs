@@ -7,6 +7,6 @@ namespace FieldClimate.Pessl.Domain.Services.Contracts
     public interface IChartService
     {
         Task<IEnumerable<string>> GetForecastImageChart(string stationId, ForecastOptionImage optionData);
-        Task<dynamic> GetLastChart(string stationId, ChartType chartType, DataGroup dataGroup, string time);
+        Task<dynamic> GetLastChart(string stationId, ChartType chartType, DataGroup dataGroup, int numberOfPeriod, TimePeriod period);
     }
 }

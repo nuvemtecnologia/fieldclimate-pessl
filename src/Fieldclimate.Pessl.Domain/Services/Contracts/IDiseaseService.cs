@@ -7,6 +7,6 @@ namespace FieldClimate.Pessl.Domain.Services.Contracts
 {
     public interface IDiseaseService
     {
-        Task<StationDisease> GetLast(string stationId, DataGroup dataGroup, string time, IEnumerable<string> diseases);
+        Task<StationDisease> GetLast(string stationId, DataGroup dataGroup, int numberOfEvents, TimePeriod timePeriod, IEnumerable<string> diseases);
     }
 }

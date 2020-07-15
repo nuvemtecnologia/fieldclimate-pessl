@@ -14,8 +14,10 @@ namespace Fieldclimate.Pessl.Domain.Services
         {
         }
 
-        public Task<StationDisease> GetLast(string stationId, DataGroup dataGroup, string time, IEnumerable<string> diseases)
+        public Task<StationDisease> GetLast(string stationId, DataGroup dataGroup, int numberOfEvents, TimePeriod timePeriod, IEnumerable<string> diseases)
         {
+            var time = $"{numberOfEvents}{timePeriod.GetDescription()}";
+            
             var requestUri = $"/data/{stationId}/{dataGroup.GetDescription()}/last/{time}";
 
             var body = new

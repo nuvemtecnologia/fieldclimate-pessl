@@ -7,6 +7,7 @@ namespace Fieldclimate.Pessl.Domain.Test
     public class FieldClimatePesselTestBase
     {
         protected ServiceProvider Provider { get; }
+        protected readonly string StationId = "00002AD4";
 
         public FieldClimatePesselTestBase()
         {

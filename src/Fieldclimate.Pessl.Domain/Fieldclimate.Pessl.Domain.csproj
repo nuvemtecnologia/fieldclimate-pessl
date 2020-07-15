@@ -9,7 +9,7 @@
         <PackageId>FieldClimate.Pessl</PackageId>
         <Authors>Nuvem tecnologia</Authors>
         <Description>A .NETStandard client for the Pessl Instruments GmbH RESTful API</Description>
-        <PackageVersion>1.0.3</PackageVersion>
+        <PackageVersion>1.0.4</PackageVersion>
         <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
     </PropertyGroup>
 

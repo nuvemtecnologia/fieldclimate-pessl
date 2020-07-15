@@ -13,8 +13,9 @@ namespace Fieldclimate.Pessl.Domain.Services
         {
         }
 
-        public async Task<dynamic> GetLastChart(string stationId, ChartType chartType, DataGroup dataGroup, string time)
+        public async Task<dynamic> GetLastChart(string stationId, ChartType chartType, DataGroup dataGroup, int numberOfPeriod, TimePeriod period)
         {
+            var time = $"{numberOfPeriod}{period.GetDescription()}";
             var requestUri = $"chart/{chartType.GetDescription()}/{stationId}/{dataGroup.GetDescription()}/last/{time}";
 
             return await GetAsync<dynamic>(requestUri);

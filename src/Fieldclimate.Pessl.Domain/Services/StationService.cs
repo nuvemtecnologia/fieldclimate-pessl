@@ -20,10 +20,10 @@ namespace Fieldclimate.Pessl.Domain.Services
             return GetAsync<IEnumerable<Station>>(requestUri);
         }
 
-        public Task<Station> Get(string stationId)
+        public Task<StationDetail> Get(string stationId)
         {
             var requestUri = $"/station/{stationId}";
-            return GetAsync<Station>(requestUri);
+            return GetAsync<StationDetail>(requestUri);
         }
 
         public async Task<StationData> GetData(string stationId, DataGroup groupBy, DateTimeOffset? from, DateTimeOffset? to)
@@ -32,8 +32,8 @@ namespace Fieldclimate.Pessl.Domain.Services
             var configTimezoneOffsetInMinute = stationDetail.config.timezone_offset;
             var timeSpan = new TimeSpan(0, configTimezoneOffsetInMinute, 0);
 
-            var minDate = from ?? DateTimeOffset.Parse(stationDetail.dates.min_date);
-            var maxDate = to ?? DateTimeOffset.Parse(stationDetail.dates.max_date);
+            var minDate = from ?? stationDetail.dates.min_date;
+            var maxDate = to ?? stationDetail.dates.max_date;
 
             var dbMinDate = minDate.ToOffset(timeSpan).ToUnixTimeSeconds();
             var dbMaxDate = maxDate.ToOffset(timeSpan).ToUnixTimeSeconds();
@@ -68,8 +68,9 @@ namespace Fieldclimate.Pessl.Domain.Services
             return GetAsync<dynamic>(requestUri);
         }
 
-        public Task<dynamic> GetOtherStationsByProximity(string stationId, string radius)
+        public Task<dynamic> GetOtherStationsByProximity(string stationId, int distance, RadiusUnity radiusUnity)
         {
+            var radius = $"{distance}{radiusUnity.GetDescription()}";
             var requestUri = $"/station/{stationId}/proximity/{radius}";
             return GetAsync<dynamic>(requestUri);
         }
