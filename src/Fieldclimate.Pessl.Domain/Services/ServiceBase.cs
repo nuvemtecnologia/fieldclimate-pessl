@@ -24,7 +24,7 @@ namespace Fieldclimate.Pessl.Domain.Services
             return await response.DeserializeResponseContentString<T>();
         }
 
-        protected async Task<TReturn> PostAsync<TReturn, TBody>(string requestUri, TBody body)
+        protected async Task<TReturn> PostAsync<TReturn>(string requestUri, object body)
         {
             var jsonContent = JsonSerializer.Serialize(body);
             var contentString = new StringContent(jsonContent, Encoding.UTF8, "application/json");

@@ -1,6 +1,8 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Fieldclimate.Pessl.Domain.Factories;
-using Fieldclimate.Pessl.Domain.Services.Contratos;
+using Fieldclimate.Pessl.Domain.Model;
+using FieldClimate.Pessl.Domain.Services.Contracts;
 
 namespace Fieldclimate.Pessl.Domain.Services
 {
@@ -40,16 +42,16 @@ namespace Fieldclimate.Pessl.Domain.Services
             return GetAsync<dynamic>(requestUri);
         }
 
-        public Task<dynamic> GetCountries()
+        public Task<IEnumerable<Country>> GetCountries()
         {
             const string requestUri = "/system/countries";
-            return GetAsync<dynamic>(requestUri);
+            return GetAsync<IEnumerable<Country>>(requestUri);
         }
 
-        public Task<dynamic> GetDiseases()
+        public Task<IEnumerable<SystemDisease>> GetDiseases()
         {
             const string requestUri = "/system/diseases";
-            return GetAsync<dynamic>(requestUri);
+            return GetAsync<IEnumerable<SystemDisease>>(requestUri);
         }
     }
 }

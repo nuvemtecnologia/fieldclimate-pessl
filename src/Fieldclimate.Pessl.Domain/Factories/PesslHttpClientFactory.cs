@@ -3,7 +3,7 @@ using System.Net.Http.Headers;
 
 namespace Fieldclimate.Pessl.Domain.Factories
 {
-    public class PesslHttpClientFactory : IPesslHttpClientFactory
+    internal class PesslHttpClientFactory : IPesslHttpClientFactory
     {
         private readonly PesslConfiguration _pesslConfiguration;
         

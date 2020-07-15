@@ -1,7 +1,7 @@
 using System.Threading.Tasks;
 using Fieldclimate.Pessl.Domain.Enum;
 
-namespace Fieldclimate.Pessl.Domain.Services.Contratos
+namespace FieldClimate.Pessl.Domain.Services.Contracts
 {
     public interface IChartService
     {

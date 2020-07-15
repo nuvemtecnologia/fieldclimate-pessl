@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using Fieldclimate.Pessl.Domain.Enum;
 using Fieldclimate.Pessl.Domain.Factories;
 using Fieldclimate.Pessl.Domain.Model;
-using Fieldclimate.Pessl.Domain.Services.Contratos;
+using FieldClimate.Pessl.Domain.Services.Contracts;
 
 namespace Fieldclimate.Pessl.Domain.Services
 {

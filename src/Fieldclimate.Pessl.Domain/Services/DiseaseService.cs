@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Fieldclimate.Pessl.Domain.Enum;
 using Fieldclimate.Pessl.Domain.Factories;
-using Fieldclimate.Pessl.Domain.Services.Contratos;
+using Fieldclimate.Pessl.Domain.Model;
+using FieldClimate.Pessl.Domain.Services.Contracts;
 
 namespace Fieldclimate.Pessl.Domain.Services
 {
@@ -13,7 +14,7 @@ namespace Fieldclimate.Pessl.Domain.Services
         {
         }
 
-        public Task<dynamic> GetLast(string stationId, DataGroup dataGroup, string time, IEnumerable<string> diseases)
+        public Task<StationDisease> GetLast(string stationId, DataGroup dataGroup, string time, IEnumerable<string> diseases)
         {
             var requestUri = $"/data/{stationId}/{dataGroup.GetDescription()}/last/{time}";
 
@@ -22,7 +23,7 @@ namespace Fieldclimate.Pessl.Domain.Services
                 diseases = diseases
             };
 
-            return PostAsync<dynamic, dynamic>(requestUri, body);
+            return PostAsync<StationDisease>(requestUri, body);
         }
     }
 }

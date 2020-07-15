@@ -16,7 +16,7 @@ namespace Fieldclimate.Pessl.Domain.Factories
         protected MetosHttpHandlerBase(PesslConfiguration pesslConfiguration)
         {
             PesslConfiguration = pesslConfiguration;
-            ApiUri = new Uri($"{PesslConfiguration.BaseAddress}/v2");
+            ApiUri = new Uri($"{PesslConfiguration.BaseAddress}v2");
             InnerHandler = new HttpClientHandler();
         }
 

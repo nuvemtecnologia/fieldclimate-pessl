@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace Fieldclimate.Pessl.Domain.ExtensionsMethods
 {
-    public static class HttpResponseMessageExtensionsMethods
+    internal static class HttpResponseMessageExtensionsMethods
     {
         public static async Task<T> DeserializeResponseContentString<T>(this HttpResponseMessage response)
         {

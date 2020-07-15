@@ -1,12 +1,12 @@
-using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Reflection;
 
+// ReSharper disable once CheckNamespace
 namespace System
 {
-    public static class EnumExtensions
+    internal static class EnumExtensions
     {
         private static TAttribute GetAttribute<TAttribute>(this Enum enumValue) where TAttribute : Attribute
         {

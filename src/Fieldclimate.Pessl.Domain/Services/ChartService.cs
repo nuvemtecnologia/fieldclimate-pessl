@@ -2,7 +2,7 @@ using System;
 using System.Threading.Tasks;
 using Fieldclimate.Pessl.Domain.Enum;
 using Fieldclimate.Pessl.Domain.Factories;
-using Fieldclimate.Pessl.Domain.Services.Contratos;
+using FieldClimate.Pessl.Domain.Services.Contracts;
 
 namespace Fieldclimate.Pessl.Domain.Services
 {
@@ -28,7 +28,7 @@ namespace Fieldclimate.Pessl.Domain.Services
                 name = optionData.GetDescription()
             };
 
-            return PostAsync<dynamic, dynamic>(requestUri, body);
+            return PostAsync<dynamic>(requestUri, body);
         }
     }
 }

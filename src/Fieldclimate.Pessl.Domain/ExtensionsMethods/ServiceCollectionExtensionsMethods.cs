@@ -1,6 +1,6 @@
 using Fieldclimate.Pessl.Domain.Factories;
 using Fieldclimate.Pessl.Domain.Services;
-using Fieldclimate.Pessl.Domain.Services.Contratos;
+using FieldClimate.Pessl.Domain.Services.Contracts;
 
 // ReSharper disable once CheckNamespace
 namespace Microsoft.Extensions.DependencyInjection

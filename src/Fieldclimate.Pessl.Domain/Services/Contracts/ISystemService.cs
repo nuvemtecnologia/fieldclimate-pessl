@@ -1,6 +1,8 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
+using Fieldclimate.Pessl.Domain.Model;
 
-namespace Fieldclimate.Pessl.Domain.Services.Contratos
+namespace FieldClimate.Pessl.Domain.Services.Contracts
 {
     public interface ISystemService
     {
@@ -9,7 +11,7 @@ namespace Fieldclimate.Pessl.Domain.Services.Contratos
         Task<dynamic> GetGroups();
         Task<dynamic> GetGroupSensors();
         Task<dynamic> GetTypes();
-        Task<dynamic> GetCountries();
-        Task<dynamic> GetDiseases();
+        Task<IEnumerable<Country>> GetCountries();
+        Task<IEnumerable<SystemDisease>> GetDiseases();
     }
 }
