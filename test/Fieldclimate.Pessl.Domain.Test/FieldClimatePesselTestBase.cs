@@ -17,7 +17,7 @@ namespace Fieldclimate.Pessl.Domain.Test
         protected IEnumerable<string> StationsId => _stationsId ??= GetAllStationsId().GetAwaiter().GetResult();
 
 
-        public FieldClimatePesselTestBase()
+        protected FieldClimatePesselTestBase()
         {
             var baseAddress = Environment.GetEnvironmentVariable("PESSL_BASE_ADDRESS");
             var publicKey = Environment.GetEnvironmentVariable("PESSL_PUBLIC_KEY");
