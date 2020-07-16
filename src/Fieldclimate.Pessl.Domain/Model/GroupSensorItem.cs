@@ -1,8 +1,8 @@
-using System.Collections.Generic;
 using Newtonsoft.Json;
 
 namespace Fieldclimate.Pessl.Domain.Model
 {
+    [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
     public class GroupSensorItem
     {
         public string Id { get; set; }

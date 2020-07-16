@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 
 namespace Fieldclimate.Pessl.Domain.Model
 {
+    [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
     public class GroupSensor
     {
         [JsonProperty("name")] public string Name { get; set; }

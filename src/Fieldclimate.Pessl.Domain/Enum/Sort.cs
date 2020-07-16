@@ -2,12 +2,19 @@ using System.ComponentModel;
 
 namespace Fieldclimate.Pessl.Domain.Enum
 {
+    /// <summary>
+    /// SORT
+    /// </summary>
     public enum Sort
     {
-        [Description("asc")]
-        Asc,
-        
-        [Description("desc")]
-        Desc
+        /// <summary>
+        /// ascended sort
+        /// </summary>
+        [Description("asc")] Asc,
+
+        /// <summary>
+        /// descended sort
+        /// </summary>
+        [Description("desc")] Desc
     }
 }

@@ -11,6 +11,12 @@ namespace Fieldclimate.Pessl.Domain.Factories
 
         public PesslConfiguration([NotNull] string publicKey, [NotNull] string privateKey)
         {
+            if (string.IsNullOrWhiteSpace(publicKey))
+                throw new ArgumentNullException(nameof(publicKey));
+
+            if (string.IsNullOrWhiteSpace(privateKey))
+                throw new ArgumentNullException(nameof(privateKey));
+
             PublicKey = publicKey;
             PrivateKey = privateKey;
         }

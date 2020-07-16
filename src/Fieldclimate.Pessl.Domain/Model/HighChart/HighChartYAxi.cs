@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 
 namespace FieldClimate.Pessl.Domain.Model.HighChart
 {
+    [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
     public class HighChartYAxi
     {
         [JsonProperty("title")] public HighChartTitle2 Title { get; set; }

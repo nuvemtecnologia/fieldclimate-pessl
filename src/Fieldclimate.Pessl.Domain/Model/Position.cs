@@ -1,5 +1,6 @@
 namespace Fieldclimate.Pessl.Domain.Model
 {
+    [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
     public class Position
     {
         public double altitude { get; set; }

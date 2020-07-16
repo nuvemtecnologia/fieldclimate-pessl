@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 
 namespace Fieldclimate.Pessl.Domain.Model
 {
+    [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
     public class Item
     {
         [JsonProperty("html")] public string Html { get; set; }

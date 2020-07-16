@@ -2,6 +2,7 @@ using Newtonsoft.Json;
 
 namespace FieldClimate.Pessl.Domain.Model.HighChart
 {
+    [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
     public class HighChartTitle
     {
         [JsonProperty("floating")] public bool Floating { get; set; }

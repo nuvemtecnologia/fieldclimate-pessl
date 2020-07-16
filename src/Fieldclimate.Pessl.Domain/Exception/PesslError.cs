@@ -2,6 +2,7 @@ using System.Net;
 
 namespace Fieldclimate.Pessl.Domain.Exception
 {
+    [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
     public class PesslError
     {
         public string Method { get; set; }

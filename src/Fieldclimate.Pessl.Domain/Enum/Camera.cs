@@ -1,5 +1,10 @@
+using System.Diagnostics.CodeAnalysis;
+
 namespace Fieldclimate.Pessl.Domain.Enum
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public enum Camera
     {
         /// <summary>

@@ -48,6 +48,17 @@ namespace Fieldclimate.Pessl.Domain.Test
         }
 
         [Theory]
+        [MemberData(nameof(GetAllStationIdInfoMemberData))]
+        public async Task Get_deve_retorno_valor(string stationId)
+        {
+            using var scope = Provider.CreateScope();
+            var stationService = scope.ServiceProvider.GetService<IDataService>();
+
+            var values = await stationService.Get(stationId);
+            Assert.NotNull(values);
+        }
+        
+        [Theory]
         [MemberData(nameof(GetDataPorPeriodoMemberData))]
         public async Task GetData_por_periodo_deve_retorno_valor(string stationId, DataGroup dataGroup, DateTimeOffset from, DateTimeOffset to)
         {

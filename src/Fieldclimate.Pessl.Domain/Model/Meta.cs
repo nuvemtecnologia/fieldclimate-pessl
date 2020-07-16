@@ -1,5 +1,6 @@
 namespace Fieldclimate.Pessl.Domain.Model
 {
+    [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
     public class Meta
     {
         public int time { get; set; }

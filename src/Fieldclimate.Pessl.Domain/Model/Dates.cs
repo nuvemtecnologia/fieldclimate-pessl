@@ -2,6 +2,7 @@ using System;
 
 namespace Fieldclimate.Pessl.Domain.Model
 {
+    [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
     public class Dates
     {
         public DateTimeOffset min_date { get; set; }

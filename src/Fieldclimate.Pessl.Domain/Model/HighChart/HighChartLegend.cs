@@ -1,8 +1,8 @@
-using FieldClimate.Pessl.Domain.Model.HighChart;
 using Newtonsoft.Json;
 
-namespace Fieldclimate.Pessl.Domain.Model
+namespace FieldClimate.Pessl.Domain.Model.HighChart
 {
+    [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
     public class HighChartLegend
     {
         [JsonProperty("backgroundColor")] public string BackgroundColor { get; set; }

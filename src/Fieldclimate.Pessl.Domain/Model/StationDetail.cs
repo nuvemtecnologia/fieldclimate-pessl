@@ -1,8 +1,11 @@
+#pragma warning disable 1591
+
 namespace Fieldclimate.Pessl.Domain.Model
 {
+    [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
     public class StationDetail
     {
-        public Name name { get; set; } 
+        public Name name { get; set; }
         public string rights { get; set; } 
         public Info info { get; set; } 
         public string note { get; set; } 

@@ -2,6 +2,9 @@ using System.ComponentModel;
 
 namespace Fieldclimate.Pessl.Domain.Enum
 {
+    /// <summary>
+    /// TIME-PERIOD
+    /// </summary>
     public enum TimePeriod
     {
         /// <summary>

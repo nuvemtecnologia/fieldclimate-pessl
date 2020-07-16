@@ -15,7 +15,7 @@ namespace FieldClimate.Pessl.Domain.Services.Contracts
         /// GET	/camera/{{STATION-ID}}/photos/info
         /// Retrieve min and max date of device data availability. This request can be used to check if device has sent new data which you can retrieve, by just memorizing last date and compare it with current one.
         /// </summary>
-        /// <param name="stationId"></param>
+        /// <param name="stationId">Unique identifier of a device</param>
         /// <returns> station information</returns>
         Task<dynamic> GetPhotosInfo(string stationId);
 
@@ -23,7 +23,7 @@ namespace FieldClimate.Pessl.Domain.Services.Contracts
         /// GET	/camera/{{STATION-ID}}/photos/last/{{AMOUNT}}/{{CAMERA}}
         /// Retrieve last data that device sends.
         /// </summary>
-        /// <param name="stationId"></param>
+        /// <param name="stationId">Unique identifier of a device</param>
         /// <param name="amount">Amount of last pictures you wish to have</param>
         /// <param name="camera"></param>
         /// <returns>Last amount of pictures</returns>
@@ -33,7 +33,7 @@ namespace FieldClimate.Pessl.Domain.Services.Contracts
         /// GET	/camera/{{STATION-ID}}/photos/from/{{FROM-UNIX-TIMESTAMP}}/to/{{TO-UNIX-TIMESTAMP}}/{{CAMERA}}
         /// Retrieve photos between specified period that device sends.
         /// </summary>
-        /// <param name="stationId"></param>
+        /// <param name="stationId">Unique identifier of a device</param>
         /// <param name="from"></param>
         /// <param name="to"></param>
         /// <param name="camera"></param>

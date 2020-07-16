@@ -1,8 +1,12 @@
+using Newtonsoft.Json;
+
 namespace Fieldclimate.Pessl.Domain.Model
 {
+    [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
     public class Config
     {
-        public int timezone_offset { get; set; }
+        [JsonProperty("timezone_offset")] public int TimezoneOffset { get; set; }
+
         public bool dst { get; set; }
         public double precision_reduction { get; set; }
         public int scheduler { get; set; }

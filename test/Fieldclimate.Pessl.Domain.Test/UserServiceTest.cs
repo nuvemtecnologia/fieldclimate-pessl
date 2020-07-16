@@ -17,7 +17,19 @@ namespace Fieldclimate.Pessl.Domain.Test
             var values = await stationService.GetStations();
 
             Assert.NotNull(values);
-            Assert.NotEmpty(values);
+            
+        }
+
+        [Fact]
+        public async Task GetLicenses_deve_possuir_valor()
+        {
+            using var scope = Provider.CreateScope();
+            var stationService = scope.ServiceProvider.GetService<IUserService>();
+
+            var values = await stationService.GetLicenses();
+
+            Assert.NotNull(values);
+            
         }
     }
 }

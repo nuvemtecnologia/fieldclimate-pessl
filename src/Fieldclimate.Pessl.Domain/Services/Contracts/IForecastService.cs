@@ -16,7 +16,7 @@ namespace FieldClimate.Pessl.Domain.Services.Contracts
         /// <summary>
         /// POST /forecast/{{STATION-ID}}/{{DATA-GROUP}}
         /// </summary>
-        /// <param name="stationId"></param>
+        /// <param name="stationId">Unique identifier of a device</param>
         /// <param name="dataGroup"></param>
         /// <param name="nextDays"></param>
         /// <returns>Forecast data package or image</returns>
@@ -28,7 +28,7 @@ namespace FieldClimate.Pessl.Domain.Services.Contracts
         /// For retrieving forecast services for your device, you need specific licenses. Contact license@metos.at if you are interested.
         /// Every call regarding forecast images is a POST HTTP call. The response includes a link to the image for download.
         /// </summary>
-        /// <param name="stationId"></param>
+        /// <param name="stationId">Unique identifier of a device</param>
         /// <param name="optionData"></param>
         /// <returns></returns>
         Task<IEnumerable<string>> GetForecastImageChart(string stationId, ForecastOptionImage optionData);

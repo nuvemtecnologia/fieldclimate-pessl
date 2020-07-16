@@ -1,8 +1,9 @@
-using Fieldclimate.Pessl.Domain.Model;
+using System.Diagnostics.CodeAnalysis;
 using Newtonsoft.Json;
 
 namespace FieldClimate.Pessl.Domain.Model.HighChart
 {
+    [ExcludeFromCodeCoverage]
     public class HighChartChart
     {
         [JsonProperty("zoomType")] public string ZoomType { get; set; }

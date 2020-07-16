@@ -30,7 +30,7 @@ namespace Fieldclimate.Pessl.Domain.Test
             var values = await systemService.GetSupportedSensors();
 
             Assert.NotNull(values);
-            Assert.NotEmpty(values);
+            
         }
 
         [Fact]
@@ -42,7 +42,7 @@ namespace Fieldclimate.Pessl.Domain.Test
             var values = await systemService.GetSupportedSensorGroups();
 
             Assert.NotNull(values);
-            Assert.NotEmpty(values);
+            
         }
 
         [Fact]
@@ -53,7 +53,7 @@ namespace Fieldclimate.Pessl.Domain.Test
             var values = await systemService.GetSensorsOrganizedInGroups();
 
             Assert.NotNull(values);
-            Assert.NotEmpty(values);
+            
         }
 
         [Fact]
@@ -65,7 +65,7 @@ namespace Fieldclimate.Pessl.Domain.Test
             var values = await systemService.GetTypeOfDevices();
 
             Assert.NotNull(values);
-            Assert.NotEmpty(values);
+            
         }
 
         [Fact]
@@ -76,7 +76,7 @@ namespace Fieldclimate.Pessl.Domain.Test
 
             var values = await systemService.GetCountries();
             Assert.NotNull(values);
-            Assert.NotEmpty(values);
+            
         }
 
         [Fact]
@@ -88,7 +88,19 @@ namespace Fieldclimate.Pessl.Domain.Test
             var values = await systemService.GetDiseases();
 
             Assert.NotNull(values);
-            Assert.NotEmpty(values);
+            
+        }
+
+        [Fact]
+        public async Task GetTimezones_deve_possuir_valor()
+        {
+            using var scope = Provider.CreateScope();
+            var systemService = scope.ServiceProvider.GetService<ISystemService>();
+
+            var values = await systemService.GetTimezones();
+
+            Assert.NotNull(values);
+            
         }
     }
 }

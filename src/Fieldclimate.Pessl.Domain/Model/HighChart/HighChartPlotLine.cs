@@ -2,6 +2,7 @@ using Newtonsoft.Json;
 
 namespace FieldClimate.Pessl.Domain.Model.HighChart
 {
+    [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
     public class HighChartPlotLine
     {
         [JsonProperty("color")] public string Color { get; set; }

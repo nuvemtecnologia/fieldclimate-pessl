@@ -1,9 +1,11 @@
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using Fieldclimate.Pessl.Domain.Model;
 using Newtonsoft.Json;
 
 namespace FieldClimate.Pessl.Domain.Model.HighChart
 {
+    [ExcludeFromCodeCoverage]
     public class HighChart
     {
         [JsonProperty("sources")] public List<string> Sources { get; set; }

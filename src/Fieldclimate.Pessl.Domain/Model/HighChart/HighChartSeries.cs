@@ -4,6 +4,7 @@ using Newtonsoft.Json;
 
 namespace FieldClimate.Pessl.Domain.Model.HighChart
 {
+    [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
     public class HighChartSeries
     {
         [JsonProperty("yAxis")] public int YAxis { get; set; }

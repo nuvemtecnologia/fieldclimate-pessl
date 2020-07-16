@@ -62,7 +62,7 @@ namespace Fieldclimate.Pessl.Domain.Test
             var values = await forecastService.GetForecastImageChart(stationId, optionImage);
 
             Assert.NotNull(values);
-            Assert.NotEmpty(values);
+            
         }
     }
 }

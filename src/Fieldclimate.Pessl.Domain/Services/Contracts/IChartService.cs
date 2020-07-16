@@ -17,61 +17,61 @@ namespace FieldClimate.Pessl.Domain.Services.Contracts
         /// <summary>
         /// GET /chart/highchart/{{STATION-ID}}/{{DATA-GROUP}}/last/{{TIME-PERIOD}}
         /// </summary>
-        /// <param name="stationId"></param>
+        /// <param name="stationId">Unique identifier of a device</param>
         /// <param name="dataGroup"></param>
         /// <param name="numberOfPeriod"></param>
         /// <param name="period"></param>
         /// <returns></returns>
         Task<IEnumerable<HighChart>> GetLastHighChart(string stationId, DataGroup dataGroup, int numberOfPeriod, TimePeriod period);
-        
+
         /// <summary>
         /// GET /chart/images/{{STATION-ID}}/{{DATA-GROUP}}/last/{{TIME-PERIOD}}
         /// </summary>
-        /// <param name="stationId"></param>
+        /// <param name="stationId">Unique identifier of a device</param>
         /// <param name="dataGroup"></param>
         /// <param name="numberOfPeriod"></param>
         /// <param name="period"></param>
         /// <returns></returns>
         Task<IEnumerable<string>> GetLastImagesChart(string stationId, DataGroup dataGroup, int numberOfPeriod, TimePeriod period);
-        
+
         /// <summary>
         /// GET /chart/image/{{STATION-ID}}/{{DATA-GROUP}}/last/{{TIME-PERIOD}}
         /// </summary>
-        /// <param name="stationId"></param>
+        /// <param name="stationId">Unique identifier of a device</param>
         /// <param name="dataGroup"></param>
         /// <param name="numberOfPeriod"></param>
         /// <param name="period"></param>
         /// <returns></returns>
         Task<IEnumerable<string>> GetLastImageChart(string stationId, DataGroup dataGroup, int numberOfPeriod, TimePeriod period);
-        
+
         /// <summary>
         /// GET /chart/highchart/{{STATION-ID}}/{{DATA-GROUP}}/from/{{FROM-UNIX-TIMESTAMP}}/to/{{TO-UNIX-TIMESTAMP}}
         /// </summary>
-        /// <param name="stationId"></param>
+        /// <param name="stationId">Unique identifier of a device</param>
         /// <param name="dataGroup"></param>
         /// <param name="from"></param>
         /// <param name="to"></param>
         /// <returns></returns>
         Task<dynamic> GetHighChart(string stationId, DataGroup dataGroup, DateTimeOffset from, DateTimeOffset to);
-        
+
         /// <summary>
         /// GET /chart/images}/{{STATION-ID}}/{{DATA-GROUP}}/from/{{FROM-UNIX-TIMESTAMP}}/to/{{TO-UNIX-TIMESTAMP}}
         /// </summary>
-        /// <param name="stationId"></param>
+        /// <param name="stationId">Unique identifier of a device</param>
         /// <param name="dataGroup"></param>
         /// <param name="from"></param>
         /// <param name="to"></param>
         /// <returns></returns>
         Task<dynamic> GetImagesChart(string stationId, DataGroup dataGroup, DateTimeOffset from, DateTimeOffset to);
-        
+
         /// <summary>
         /// GET /chart/image/{{STATION-ID}}/{{DATA-GROUP}}/from/{{FROM-UNIX-TIMESTAMP}}/to/{{TO-UNIX-TIMESTAMP}}
         /// </summary>
-        /// <param name="stationId"></param>
+        /// <param name="stationId">Unique identifier of a device</param>
         /// <param name="dataGroup"></param>
         /// <param name="from"></param>
         /// <param name="to"></param>
         /// <returns></returns>
-        Task<dynamic> GeImageChart(string stationId, DataGroup dataGroup, DateTimeOffset from, DateTimeOffset to);
+        Task<dynamic> GetImageChart(string stationId, DataGroup dataGroup, DateTimeOffset from, DateTimeOffset to);
     }
 }

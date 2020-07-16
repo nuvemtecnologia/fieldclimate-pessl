@@ -1,9 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Fieldclimate.Pessl.Domain.Factories;
-using FieldClimate.Pessl.Domain.Services.Contracts;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Fieldclimate.Pessl.Domain.Test.Base
@@ -14,7 +12,7 @@ namespace Fieldclimate.Pessl.Domain.Test.Base
         private static IEnumerable<string> _stationsId;
 
         protected static ServiceProvider Provider => _provider ??= CreateServiceProvider();
-        protected static IEnumerable<string> AllStationsId => _stationsId ??= GetAllStationsId().GetAwaiter().GetResult();
+        protected static IEnumerable<string> AllStationsId => _stationsId ??= GetAllStationsId();
         protected static IEnumerable<string> CameraStationsId => new List<string>();
 
         protected static readonly string[] DefaultDiseases =
@@ -42,19 +40,22 @@ namespace Fieldclimate.Pessl.Domain.Test.Base
                 }).ToList();
         }
 
-        private static async Task<IEnumerable<string>> GetAllStationsId()
+        private static IEnumerable<string> GetAllStationsId()
         {
             return new[]
             {
-                "00002AD4"
+                "00002AD0",
+                //"00002AD4",
+                // "00002B20",
+                // "00002B22"
             };
 
-            using var scope = Provider.CreateScope();
-            var stationService = scope.ServiceProvider.GetService<IUserService>();
-
-            var values = await stationService.GetStations();
-
-            return values.Select(x => x.name.original);
+            // using var scope = Provider.CreateScope();
+            // var stationService = scope.ServiceProvider.GetService<IUserService>();
+            //
+            // var values = await stationService.GetStations();
+            //
+            // return values.Select(x => x.name.original);
         }
     }
 }

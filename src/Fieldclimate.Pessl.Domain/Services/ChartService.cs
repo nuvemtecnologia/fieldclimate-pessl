@@ -59,7 +59,7 @@ namespace Fieldclimate.Pessl.Domain.Services
             return GetAsync<dynamic>(requestUri);
         }
 
-        public Task<dynamic> GeImageChart(string stationId, DataGroup dataGroup, DateTimeOffset from, DateTimeOffset to)
+        public Task<dynamic> GetImageChart(string stationId, DataGroup dataGroup, DateTimeOffset from, DateTimeOffset to)
         {
             var requestUri = $"/chart/{ChartType.Image.GetDescription()}/{stationId}/{dataGroup.GetDescription()}/from/{from.ToUnixTimeSeconds()}/to/{to.ToUnixTimeSeconds()}";
             return GetAsync<dynamic>(requestUri);

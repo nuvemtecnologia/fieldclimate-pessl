@@ -2,6 +2,7 @@ using System.Collections.Generic;
 
 namespace Fieldclimate.Pessl.Domain.Model
 {
+    [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
     public class Disease
     {
         public string key { get; set; }

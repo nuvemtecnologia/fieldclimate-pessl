@@ -28,7 +28,7 @@ namespace FieldClimate.Pessl.Domain.Services.Contracts
         /// <param name="stationId">Unique identifier of a device</param>
         /// <returns>list of sensors of a station</returns>
         Task<IEnumerable<Sensor>> GetSensors(string stationId);
-        
+
         /// <summary>
         /// /station/{{STATION-ID}}/nodes
         /// Station nodes are wireless nodes connected to base station (STATION-ID). Here you can list custom names if any of a node has custom name.
@@ -37,7 +37,7 @@ namespace FieldClimate.Pessl.Domain.Services.Contracts
         /// <param name="stationId">Unique identifier of a device</param>
         /// <returns>list of nodes (wireless devices) connected to a station</returns>
         Task<NodeRoot> GetNodes(string stationId);
-        
+
         /// <summary>
         /// /station/{{STATION-ID}}/serials
         /// Sensor serials settings. If there are no settings we get no content response.
@@ -47,7 +47,7 @@ namespace FieldClimate.Pessl.Domain.Services.Contracts
         /// <param name="stationId">Unique identifier of a device</param>
         /// <returns>List of serials (of a sensor) and their names</returns>
         Task<dynamic> GetSerials(string stationId);
-        
+
         /// <summary>
         /// /station/{{STATION-ID}}/proximity/{{RADIUS}}
         /// Find stations in proximity of specified station
@@ -77,7 +77,7 @@ namespace FieldClimate.Pessl.Domain.Services.Contracts
         /// <param name="to"></param>
         /// <param name="sort"></param>
         /// <returns>Station events from to</returns>
-        Task<dynamic> GetEvents(string stationId,  DateTimeOffset from, DateTimeOffset to, Sort sort = Sort.Asc);
+        Task<dynamic> GetEvents(string stationId, DateTimeOffset from, DateTimeOffset to, Sort sort = Sort.Asc);
 
         /// <summary>
         /// GET /station/{{STATION-ID}}/history/{{FILTER}}/last/{{AMOUNT}}/{{SORT}}
@@ -89,7 +89,7 @@ namespace FieldClimate.Pessl.Domain.Services.Contracts
         /// <param name="sort"></param>
         /// <returns>Last station communication history filter</returns>
         Task<dynamic> GetTransmissionHistory(string stationId, TransmissionHistoryFilter filter, int amount, Sort sort = Sort.Asc);
-        
+
         /// <summary>
         /// GET /station/{{STATION-ID}}/history/{{FILTER}}/from/{{FROM-UNIX-TIMESTAMP}}/to/{{TO-UNIX-TIMESTAMP}}/{{SORT}}
         /// Read transmission history for specific time period. Optionally you can also sort them ASC or DESC and filter.
@@ -101,17 +101,12 @@ namespace FieldClimate.Pessl.Domain.Services.Contracts
         /// <param name="sort"></param>
         /// <returns></returns>
         Task<dynamic> GetTransmissionHistory(string stationId, TransmissionHistoryFilter filter, DateTimeOffset from, DateTimeOffset to, Sort sort = Sort.Asc);
-        
-        
+
         /// <summary>
         /// /station/{{STATION-ID}}/licenses
         /// </summary>
         /// <param name="stationId">Unique identifier of a device</param>
         /// <returns>Station licenses for disease models or forecast</returns>
         Task<dynamic> GetLicenses(string stationId);
-        
-        
-        
-       
     }
 }
