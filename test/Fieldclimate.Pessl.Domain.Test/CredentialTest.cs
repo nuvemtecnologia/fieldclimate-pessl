@@ -1,12 +1,13 @@
 using System.Net;
 using System.Threading.Tasks;
 using Fieldclimate.Pessl.Domain.Factories;
+using Fieldclimate.Pessl.Domain.Test.Base;
 using Microsoft.Extensions.DependencyInjection;
 using Xunit;
 
 namespace Fieldclimate.Pessl.Domain.Test
 {
-    public class FieldClimatePesslCredentialTest : FieldClimatePesselTestBase
+    public class CredentialTest : FieldClimatePesselTestBase
     {
         [Fact]
         public async Task Ao_realizar_request_credencial_deve_ser_valida()

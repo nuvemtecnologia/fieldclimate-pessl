@@ -4,16 +4,28 @@ namespace Fieldclimate.Pessl.Domain.Enum
 {
     public enum TimePeriod
     {
+        /// <summary>
+        /// Read Xh which means X amount of hours
+        /// </summary>
         [Description("h")]
-        hour,
+        Hour,
         
+        /// <summary>
+        /// Read Xd which means X amount of days
+        /// </summary>
         [Description("d")]
-        days,
+        Days,
         
+        /// <summary>
+        /// Read Xw which means X amount of weeks
+        /// </summary>
         [Description("w")]
-        weeks,
+        Weeks,
         
+        /// <summary>
+        /// Read Xm which means X amount of months
+        /// </summary>
         [Description("m")]
-        months
+        Months
     }
 }

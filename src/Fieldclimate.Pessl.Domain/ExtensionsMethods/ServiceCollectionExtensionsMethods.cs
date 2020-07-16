@@ -27,6 +27,8 @@ namespace Microsoft.Extensions.DependencyInjection
             services.AddTransient<IChartService, ChartService>();
             services.AddTransient<IUserService, UserService>();
             services.AddTransient<IDataService, DataService>();
+            services.AddTransient<ICameraService, CameraService>();
+
 
             return services;
         }

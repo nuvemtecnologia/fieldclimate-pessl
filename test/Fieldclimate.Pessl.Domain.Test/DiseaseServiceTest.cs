@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Fieldclimate.Pessl.Domain.Enum;
 using FieldClimate.Pessl.Domain.Services.Contracts;
+using Fieldclimate.Pessl.Domain.Test.Base;
 using Microsoft.Extensions.DependencyInjection;
 using Xunit;
 
@@ -10,14 +11,9 @@ namespace Fieldclimate.Pessl.Domain.Test
 {
     public class DiseaseServiceTest : FieldClimatePesselTestBase
     {
-        private static DateTimeOffset from = new DateTime(2020, 1, 1);
-        private static DateTimeOffset to = new DateTime(2020, 1, 30);
-        private static string[] defaultDiseases =
-        {
-            "SugarBeet/BeetCast",
-            "SugarBeet/Cercopri"
-        };
-
+        private static readonly DateTimeOffset From = new DateTime(2020, 1, 1);
+        private static readonly DateTimeOffset To = new DateTime(2020, 1, 30);
+        
         public static IEnumerable<object[]> AllGetLastParameters()
         {
             var allDataGroupValues = EnumExtensions.GetValidOptions<DataGroup>();
@@ -29,7 +25,7 @@ namespace Fieldclimate.Pessl.Domain.Test
             {
                 foreach (var timePeriod in allTimePeriodValues)
                 {
-                    memberData.Add(new object[] {dataGroup, 2, timePeriod, defaultDiseases});
+                    memberData.Add(new object[] {dataGroup, 2, timePeriod, DefaultDiseases});
                     memberData.Add(new object[] {dataGroup, 2, timePeriod, null});
                 }
             }
@@ -45,8 +41,8 @@ namespace Fieldclimate.Pessl.Domain.Test
 
             foreach (var dataGroup in allDataGroupValues)
             {
-                memberData.Add(new object[] {dataGroup, from, to, defaultDiseases});
-                memberData.Add(new object[] {dataGroup, from, to, null});
+                memberData.Add(new object[] {dataGroup, From, To, DefaultDiseases});
+                memberData.Add(new object[] {dataGroup, From, To, null});
             }
 
             return memberData;
@@ -59,7 +55,7 @@ namespace Fieldclimate.Pessl.Domain.Test
             using var scope = Provider.CreateScope();
             var diseaseService = scope.ServiceProvider.GetService<IDiseaseService>();
 
-            foreach (var stationId in StationsId)
+            foreach (var stationId in AllStationsId)
             {
                 var values = await diseaseService.GetLast(stationId, dataGroup, numberOfEvents, period, diseases);
 
@@ -74,7 +70,7 @@ namespace Fieldclimate.Pessl.Domain.Test
             using var scope = Provider.CreateScope();
             var diseaseService = scope.ServiceProvider.GetService<IDiseaseService>();
 
-            foreach (var stationId in StationsId)
+            foreach (var stationId in AllStationsId)
             {
                 var values = await diseaseService.Get(stationId, dataGroup, from, to, diseases);
 

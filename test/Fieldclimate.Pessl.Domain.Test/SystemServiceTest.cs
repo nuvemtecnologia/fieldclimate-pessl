@@ -2,6 +2,7 @@ using System;
 using System.Net;
 using System.Threading.Tasks;
 using FieldClimate.Pessl.Domain.Services.Contracts;
+using Fieldclimate.Pessl.Domain.Test.Base;
 using Microsoft.Extensions.DependencyInjection;
 using Xunit;
 
@@ -10,7 +11,7 @@ namespace Fieldclimate.Pessl.Domain.Test
     public class SystemServiceTest : FieldClimatePesselTestBase
     {
         [Fact]
-        public async Task Ao_buscar_status_retorno_deve_possuir_valor()
+        public async Task GetStatus_deve_possuir_valor()
         {
             using var scope = Provider.CreateScope();
             var systemService = scope.ServiceProvider.GetService<ISystemService>();
@@ -21,7 +22,7 @@ namespace Fieldclimate.Pessl.Domain.Test
         }
 
         [Fact]
-        public async Task Ao_buscar_sensores_retorno_deve_possuir_valor()
+        public async Task GetSupportedSensors_deve_possuir_valor()
         {
             using var scope = Provider.CreateScope();
             var systemService = scope.ServiceProvider.GetService<ISystemService>();
@@ -33,7 +34,7 @@ namespace Fieldclimate.Pessl.Domain.Test
         }
 
         [Fact]
-        public async Task Ao_buscar_grupos_retorno_deve_possuir_valor()
+        public async Task GetSupportedSensorGroups_deve_possuir_valor()
         {
             using var scope = Provider.CreateScope();
             var systemService = scope.ServiceProvider.GetService<ISystemService>();
@@ -45,7 +46,7 @@ namespace Fieldclimate.Pessl.Domain.Test
         }
 
         [Fact]
-        public async Task Ao_buscar_grupo_de_sensores_retorno_deve_possuir_valor()
+        public async Task GetSensorsOrganizedInGroups_deve_possuir_valor()
         {
             using var scope = Provider.CreateScope();
             var systemService = scope.ServiceProvider.GetService<ISystemService>();
@@ -56,7 +57,7 @@ namespace Fieldclimate.Pessl.Domain.Test
         }
 
         [Fact]
-        public async Task Ao_buscar_types_retorno_deve_possuir_valor()
+        public async Task GetTypeOfDevices_deve_possuir_valor()
         {
             using var scope = Provider.CreateScope();
             var systemService = scope.ServiceProvider.GetService<ISystemService>();
@@ -68,7 +69,7 @@ namespace Fieldclimate.Pessl.Domain.Test
         }
 
         [Fact]
-        public async Task Ao_buscar_paises_retorno_deve_possuir_valor()
+        public async Task GetCountries_deve_possuir_valor()
         {
             using var scope = Provider.CreateScope();
             var systemService = scope.ServiceProvider.GetService<ISystemService>();
@@ -79,7 +80,7 @@ namespace Fieldclimate.Pessl.Domain.Test
         }
 
         [Fact]
-        public async Task Ao_buscar_doencas_retorno_deve_possuir_valor()
+        public async Task GetDiseases_deve_possuir_valor()
         {
             using var scope = Provider.CreateScope();
             var systemService = scope.ServiceProvider.GetService<ISystemService>();

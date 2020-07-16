@@ -1,3 +1,5 @@
+using System.ComponentModel;
+
 namespace Fieldclimate.Pessl.Domain.Enum
 {
     /// <summary>
@@ -5,8 +7,19 @@ namespace Fieldclimate.Pessl.Domain.Enum
     /// </summary>
     public enum ChartType
     {
-        image = 1,
-        images = 2,
-        highchart = 3
+        /// <summary>
+        /// image
+        /// </summary>
+        [Description("image")] Image = 1,
+
+        /// <summary>
+        /// multiple images
+        /// </summary>
+        [Description("images")] Images = 2,
+
+        /// <summary>
+        /// highchart
+        /// </summary>
+        [Description("highchart")] Highchart = 3
     }
 }
