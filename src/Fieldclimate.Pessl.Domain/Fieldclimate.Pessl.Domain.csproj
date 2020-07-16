@@ -5,11 +5,10 @@
         <AssemblyName>FieldClimate.Pessl.Domain</AssemblyName>
         <RootNamespace>FieldClimate.Pessl.Domain</RootNamespace>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-        <PackageProjectUrl></PackageProjectUrl>
         <PackageId>FieldClimate.Pessl</PackageId>
         <Authors>Nuvem Tecnologia</Authors>
         <Description>A .NETStandard client for the Pessl Instruments GmbH RESTful API</Description>
-        <PackageVersion>1.0.6</PackageVersion>
+        <PackageVersion>1.0.7</PackageVersion>
         <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
         <RepositoryUrl>https://github.com/nuvemtecnologia/fieldclimate-pessl</RepositoryUrl>
     </PropertyGroup>
