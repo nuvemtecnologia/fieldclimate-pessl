@@ -5,13 +5,12 @@ namespace Fieldclimate.Pessl.Domain.Factories
 {
     public class PesslConfiguration
     {
-        public readonly Uri BaseAddress;
+        public Uri BaseAddress => new Uri("https://api.fieldclimate.com");
         public readonly string PublicKey;
         public readonly string PrivateKey;
 
-        public PesslConfiguration([NotNull] string publicKey, [NotNull] string privateKey, [NotNull] string baseAddress = "https://api.fieldclimate.com")
+        public PesslConfiguration([NotNull] string publicKey, [NotNull] string privateKey)
         {
-            BaseAddress = new Uri(baseAddress);
             PublicKey = publicKey;
             PrivateKey = privateKey;
         }

@@ -13,20 +13,6 @@ namespace Fieldclimate.Pessl.Domain.Test
     public class StationServiceTest : FieldClimatePesselTestBase
     {
         [Fact]
-        public async Task Ao_buscar_stations_retorno_deve_possuir_valor()
-        {
-            using var scope = Provider.CreateScope();
-            var stationService = scope.ServiceProvider.GetService<IStationService>();
-
-            var values = await stationService.GetAll();
-
-            var allStations = values.Select(x => x.name.original);
-
-            Assert.NotNull(values);
-            Assert.NotEmpty(values);
-        }
-
-        [Fact]
         public async Task Ao_buscar_detalhe_da_estacao_retorno_deve_possuir_valor()
         {
             using var scope = Provider.CreateScope();
@@ -35,44 +21,6 @@ namespace Fieldclimate.Pessl.Domain.Test
             foreach (var stationId in StationsId)
             {
                 var values = await stationService.Get(stationId);
-                Assert.NotNull(values);
-            }
-        }
-
-        [Theory]
-        [InlineData(DataGroup.daily)]
-        [InlineData(DataGroup.hourly)]
-        [InlineData(DataGroup.monthly)]
-        [InlineData(DataGroup.raw)]
-        public async Task Ao_buscar_dado_da_estacao_por_periodo_retorno_deve_possuir_valor(DataGroup dataGroup)
-        {
-            var from = new DateTime(2020, 1, 1);
-            var to = new DateTime(2020, 2, 1);
-
-            using var scope = Provider.CreateScope();
-            var stationService = scope.ServiceProvider.GetService<IStationService>();
-
-            foreach (var stationId in StationsId)
-            {
-                var values = await stationService.GetData(stationId, dataGroup, from, to);
-                Assert.NotNull(values);
-            }
-        }
-
-        [Theory]
-        [InlineData(DataGroup.daily)]
-        [InlineData(DataGroup.hourly)]
-        [InlineData(DataGroup.monthly)]
-        [InlineData(DataGroup.raw)]
-        public async Task Ao_buscar_ultimo_dado_da_estacao_retorno_deve_possuir_valor(DataGroup dataGroup)
-        {
-            using var scope = Provider.CreateScope();
-            var stationService = scope.ServiceProvider.GetService<IStationService>();
-
-            foreach (var stationId in StationsId)
-            {
-                var values = await stationService.GetLastData(stationId, dataGroup);
-
                 Assert.NotNull(values);
             }
         }

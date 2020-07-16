@@ -9,66 +9,45 @@ using Newtonsoft.Json.Linq;
 
 namespace Fieldclimate.Pessl.Domain.Services
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class StationService : ServiceBase, IStationService
     {
+        /// <inheritdoc />
         public StationService(IPesslHttpClientFactory pesslHttpClientFactory) : base(pesslHttpClientFactory)
         {
         }
 
-        public Task<IEnumerable<Station>> GetAll()
-        {
-            const string requestUri = "/user/stations";
-            return GetAsync<IEnumerable<Station>>(requestUri);
-        }
-
+        /// <inheritdoc />
         public Task<StationDetail> Get(string stationId)
         {
             var requestUri = $"/station/{stationId}";
             return GetAsync<StationDetail>(requestUri);
         }
 
-        public async Task<StationData> GetData(string stationId, DataGroup groupBy, DateTimeOffset? from, DateTimeOffset? to)
-        {
-            var stationDetail = await Get(stationId);
-            var configTimezoneOffsetInMinute = stationDetail.config.timezone_offset;
-            var timeSpan = new TimeSpan(0, configTimezoneOffsetInMinute, 0);
-
-            var minDate = from ?? stationDetail.dates.min_date;
-            var maxDate = to ?? stationDetail.dates.max_date;
-
-            var dbMinDate = minDate.ToOffset(timeSpan).ToUnixTimeSeconds();
-            var dbMaxDate = maxDate.ToOffset(timeSpan).ToUnixTimeSeconds();
-
-            var requestUri = $"/data/{stationId}/{groupBy}/from/{dbMinDate}/to/{dbMaxDate}";
-
-            return await GetAsync<StationData>(requestUri);
-        }
-
-        public Task<StationData> GetLastData(string stationId, DataGroup groupBy)
-        {
-            var requestUri = $"/data/{stationId}/{groupBy}/last/1";
-
-            return GetAsync<StationData>(requestUri);
-        }
-
+        /// <inheritdoc />
         public Task<IEnumerable<Sensor>> GetSensors(string stationId)
         {
             var requestUri = $"/station/{stationId}/sensors";
             return GetAsync<IEnumerable<Sensor>>(requestUri);
         }
 
+        /// <inheritdoc />
         public Task<NodeRoot> GetNodes(string stationId)
         {
             var requestUri = $"/station/{stationId}/nodes";
             return GetAsync<NodeRoot>(requestUri);
         }
 
+        /// <inheritdoc />
         public Task<dynamic> GetSerials(string stationId)
         {
             var requestUri = $"/station/{stationId}/serials";
             return GetAsync<dynamic>(requestUri);
         }
 
+        /// <inheritdoc />
         public async Task<IEnumerable<StationProximity>> GetOtherStationsByProximity(string stationId, int distance, RadiusUnity radiusUnity)
         {
             var radius = $"{distance}{radiusUnity.GetDescription()}";
@@ -79,7 +58,7 @@ namespace Fieldclimate.Pessl.Domain.Services
             var result = new List<StationProximity>();
 
             if (!(values is JObject jObject)) return result;
-            
+
             foreach (var (key, value) in jObject)
             {
                 result.Add(
@@ -89,14 +68,43 @@ namespace Fieldclimate.Pessl.Domain.Services
                         Coordinate = value.ToObject<Coordinate>()
                     });
             }
-            
+
             return result;
         }
 
-        public Task<IEnumerable<Event>> GetLastEvents(string stationId, int amount)
+        /// <inheritdoc />
+        public Task<IEnumerable<Event>> GetLastEvents(string stationId, int amount, Sort sort = Sort.Asc)
         {
-            var requestUri = $"/station/{stationId}/events/last/{amount}/desc";
+            var requestUri = $"/station/{stationId}/events/last/{amount}/{sort.GetDescription()}";
             return GetAsync<IEnumerable<Event>>(requestUri);
+        }
+
+        /// <inheritdoc />
+        public Task<dynamic> GetEvents(string stationId, DateTimeOffset from, DateTimeOffset to, Sort sort = Sort.Asc)
+        {
+            var requestUri = $"/station/{stationId}/events/from/{from.ToUnixTimeSeconds()}/to/{to.ToUnixTimeSeconds()}/{sort.GetDescription()}";
+            return GetAsync<dynamic>(requestUri);
+        }
+
+        /// <inheritdoc />
+        public Task<dynamic> GetTransmissionHistory(string stationId, TransmissionHistoryFilter filter, int amount, Sort sort = Sort.Asc)
+        {
+            var requestUri = $"/station/{stationId}/history/{filter.GetDescription()}/last/{amount}/{sort.GetDescription()}";
+            return GetAsync<dynamic>(requestUri);
+        }
+
+        /// <inheritdoc />
+        public Task<dynamic> GetTransmissionHistory(string stationId, TransmissionHistoryFilter filter, DateTimeOffset from, DateTimeOffset to, Sort sort = Sort.Asc)
+        {
+            var requestUri = $"/station/{stationId}/history/{filter.GetDescription()}/from/{from.ToUnixTimeSeconds()}/to/{to.ToUnixTimeSeconds()}/{sort.GetDescription()}";
+            return GetAsync<dynamic>(requestUri);
+        }
+
+        /// <inheritdoc />
+        public Task<dynamic> GetLicenses(string stationId)
+        {
+            var requestUri = $"/station/{stationId}/licenses";
+            return GetAsync<dynamic>(requestUri);
         }
     }
 }

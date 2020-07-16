@@ -19,12 +19,11 @@ namespace Fieldclimate.Pessl.Domain.Test
 
         protected FieldClimatePesselTestBase()
         {
-            var baseAddress = Environment.GetEnvironmentVariable("PESSL_BASE_ADDRESS");
             var publicKey = Environment.GetEnvironmentVariable("PESSL_PUBLIC_KEY");
             var privateKey = Environment.GetEnvironmentVariable("PESSL_PRIVATE_KEY");
 
             Provider = new ServiceCollection()
-                .AddFieldClimatePessl(new PesslConfiguration(publicKey, privateKey, baseAddress))
+                .AddFieldClimatePessl(new PesslConfiguration(publicKey, privateKey))
                 .BuildServiceProvider();
         }
 
@@ -36,9 +35,9 @@ namespace Fieldclimate.Pessl.Domain.Test
             };
 
             using var scope = Provider.CreateScope();
-            var stationService = scope.ServiceProvider.GetService<IStationService>();
+            var stationService = scope.ServiceProvider.GetService<IUserService>();
 
-            var values = await stationService.GetAll();
+            var values = await stationService.GetStations();
 
             return values.Select(x => x.name.original);
         }

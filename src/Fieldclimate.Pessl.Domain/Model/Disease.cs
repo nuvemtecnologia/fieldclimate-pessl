@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace Fieldclimate.Pessl.Domain.Model
 {
-    public class SystemModelDisease
+    public class Disease
     {
         public string key { get; set; }
         public string name { get; set; }

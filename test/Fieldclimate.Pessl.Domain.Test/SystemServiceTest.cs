@@ -26,7 +26,7 @@ namespace Fieldclimate.Pessl.Domain.Test
             using var scope = Provider.CreateScope();
             var systemService = scope.ServiceProvider.GetService<ISystemService>();
 
-            var values = await systemService.GetSensors();
+            var values = await systemService.GetSupportedSensors();
 
             Assert.NotNull(values);
             Assert.NotEmpty(values);
@@ -38,7 +38,7 @@ namespace Fieldclimate.Pessl.Domain.Test
             using var scope = Provider.CreateScope();
             var systemService = scope.ServiceProvider.GetService<ISystemService>();
 
-            var values = await systemService.GetGroups();
+            var values = await systemService.GetSupportedSensorGroups();
 
             Assert.NotNull(values);
             Assert.NotEmpty(values);
@@ -49,7 +49,7 @@ namespace Fieldclimate.Pessl.Domain.Test
         {
             using var scope = Provider.CreateScope();
             var systemService = scope.ServiceProvider.GetService<ISystemService>();
-            var values = await systemService.GetGroupSensors();
+            var values = await systemService.GetSensorsOrganizedInGroups();
 
             Assert.NotNull(values);
             Assert.NotEmpty(values);
@@ -61,7 +61,7 @@ namespace Fieldclimate.Pessl.Domain.Test
             using var scope = Provider.CreateScope();
             var systemService = scope.ServiceProvider.GetService<ISystemService>();
 
-            var values = await systemService.GetTypes();
+            var values = await systemService.GetTypeOfDevices();
 
             Assert.NotNull(values);
             Assert.NotEmpty(values);

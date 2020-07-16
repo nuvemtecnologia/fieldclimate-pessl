@@ -1,6 +1,5 @@
 using System.Net.Http;
 using System.Text;
-using System.Text.Json;
 using System.Threading.Tasks;
 using Fieldclimate.Pessl.Domain.ExtensionsMethods;
 using Fieldclimate.Pessl.Domain.Factories;
@@ -8,6 +7,9 @@ using Newtonsoft.Json;
 
 namespace Fieldclimate.Pessl.Domain.Services
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public abstract class ServiceBase
     {
         private readonly IPesslHttpClientFactory _pesslHttpClientFactory;
@@ -17,6 +19,12 @@ namespace Fieldclimate.Pessl.Domain.Services
             _pesslHttpClientFactory = pesslHttpClientFactory;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="requestUri"></param>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
         protected async Task<T> GetAsync<T>(string requestUri)
         {
             var client = _pesslHttpClientFactory.Create();
@@ -25,6 +33,13 @@ namespace Fieldclimate.Pessl.Domain.Services
             return await response.DeserializeResponseContentString<T>();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="requestUri"></param>
+        /// <param name="body"></param>
+        /// <typeparam name="TReturn"></typeparam>
+        /// <returns></returns>
         protected async Task<TReturn> PostAsync<TReturn>(string requestUri, object body)
         {
             var jsonContent = JsonConvert.SerializeObject(body);

@@ -1,3 +1,4 @@
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -28,10 +29,17 @@ namespace System
 
         public static string GetValidOptionsAsString<T>() where T : struct
         {
-            var forecastOptionImages = Array.AsReadOnly((T[]) Enum.GetValues(typeof(T)))
+            var allOptions = Array.AsReadOnly((T[]) Enum.GetValues(typeof(T)))
                 .Select(v => v.ToString());
 
-            return string.Join(", ", forecastOptionImages);
+            return string.Join(", ", allOptions);
+        }
+
+        public static ReadOnlyCollection<T> GetValidOptions<T>() where T : struct
+        {
+            var allOptions = Array.AsReadOnly((T[]) Enum.GetValues(typeof(T)));
+
+            return allOptions;
         }
     }
 }

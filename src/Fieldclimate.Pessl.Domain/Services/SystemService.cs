@@ -10,29 +10,34 @@ namespace Fieldclimate.Pessl.Domain.Services
 {
     public class SystemService : ServiceBase, ISystemService
     {
+        /// <inheritdoc />
         public SystemService(IPesslHttpClientFactory pesslHttpClientFactory) : base(pesslHttpClientFactory)
         {
         }
 
+        /// <inheritdoc />
         public Task<bool> GetStatus()
         {
             const string requestUri = "/system/status";
             return GetAsync<bool>(requestUri);
         }
 
-        public Task<dynamic> GetSensors()
+        /// <inheritdoc />
+        public Task<dynamic> GetSupportedSensors()
         {
             const string requestUri = "/system/sensors";
             return GetAsync<dynamic>(requestUri);
         }
 
-        public Task<dynamic> GetGroups()
+        /// <inheritdoc />
+        public Task<dynamic> GetSupportedSensorGroups()
         {
             const string requestUri = "/system/groups";
             return GetAsync<dynamic>(requestUri);
         }
 
-        public async Task<IEnumerable<GroupSensor>> GetGroupSensors()
+        /// <inheritdoc />
+        public async Task<IEnumerable<GroupSensor>> GetSensorsOrganizedInGroups()
         {
             const string requestUri = "/system/group/sensors";
             var values = await GetAsync<dynamic>(requestUri);
@@ -62,7 +67,7 @@ namespace Fieldclimate.Pessl.Domain.Services
             var sensors = value?.Value<JObject>("sensors");
 
             if (sensors == null) return result;
-            
+
 
             foreach (var (key1, value1) in sensors)
             {
@@ -75,18 +80,19 @@ namespace Fieldclimate.Pessl.Domain.Services
             return result;
         }
 
-        public async Task<IEnumerable<SystemType>> GetTypes()
+        /// <inheritdoc />
+        public async Task<IEnumerable<DeviceType>> GetTypeOfDevices()
         {
             const string requestUri = "/system/types";
             var values = await GetAsync<dynamic>(requestUri);
 
-            var result = new List<SystemType>();
+            var result = new List<DeviceType>();
 
             if (!(values is JObject jObject)) return result;
 
             foreach (var (key, value) in jObject)
             {
-                result.Add(new SystemType()
+                result.Add(new DeviceType()
                 {
                     Key = key,
                     Value = value.ToString()
@@ -96,12 +102,21 @@ namespace Fieldclimate.Pessl.Domain.Services
             return result;
         }
 
+        /// <inheritdoc />
         public Task<IEnumerable<Country>> GetCountries()
         {
             const string requestUri = "/system/countries";
             return GetAsync<IEnumerable<Country>>(requestUri);
         }
 
+        /// <inheritdoc />
+        public Task<dynamic> GetTimezones()
+        {
+            const string requestUri = "/system/timezones";
+            return GetAsync<dynamic>(requestUri);
+        }
+
+        /// <inheritdoc />
         public Task<IEnumerable<SystemDisease>> GetDiseases()
         {
             const string requestUri = "/system/diseases";

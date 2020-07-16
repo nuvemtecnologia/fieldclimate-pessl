@@ -12,7 +12,7 @@ namespace Fieldclimate.Pessl.Domain.Model
         [JsonProperty("unit")] public string Unit { get; set; }
 
         /// <summary>
-        /// Pode ser bool, List<string>
+        /// Pode ser bool, List of string
         /// </summary>
         [JsonProperty("units")] public dynamic Units { get; set; }
 

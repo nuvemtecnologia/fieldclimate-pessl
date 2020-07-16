@@ -1,5 +1,8 @@
 namespace Fieldclimate.Pessl.Domain.Enum
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public enum ChartType
     {
         image = 1,
