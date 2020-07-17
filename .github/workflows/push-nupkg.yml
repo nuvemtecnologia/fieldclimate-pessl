@@ -1,10 +1,9 @@
 name: Push nupkg
 
 on:
-  watch:
-    types: [started]
-  pull_request:
-    branches: [ master ]
+  push:
+    tags: 
+      - V.*
 
 jobs:
   build:
