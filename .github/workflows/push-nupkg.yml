@@ -1,6 +1,8 @@
 name: Push nupkg
 
 on:
+  watch:
+    types: [started]
   push:
     tags: 
       - V.*
