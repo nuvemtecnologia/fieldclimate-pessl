@@ -1,0 +1,30 @@
+name: Push nupkg
+
+on:
+  watch:
+    types: [started]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.1.101
+    - name: Install dependencies
+      run: dotnet restore
+    - name: Build
+      run: dotnet build --configuration Release --no-restore
+    - name: pack
+      run: dotnet pack src/Fieldclimate.Pessl.Domain/Fieldclimate.Pessl.Domain.csproj --no-build --no-restore -c Release -o nupkgs
+    - name: nuget push
+      run: |
+        nuget setapikey ${{ env.NUGET_API_KEY }}
+        nuget push nupkgs/*.nupkg -Source nuget.org
+        
