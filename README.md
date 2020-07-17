@@ -1,6 +1,10 @@
 # fieldclimate-pessl
 A .NETStandard client for the Pessl Instruments GmbH RESTful API.
 
+![Push nupkg](https://github.com/nuvemtecnologia/fieldclimate-pessl/workflows/Push%20nupkg/badge.svg)
+
+___
+## Reference
   - [API V2 - doc](https://api.fieldclimate.com/v2/docs)
   - [fieldclimate](https://www.fieldclimate.com/)
   - [dashboard](https://ng.fieldclimate.com/)
